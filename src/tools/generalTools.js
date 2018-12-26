@@ -31,6 +31,14 @@ const accent_map = {
 	'Ź': 'z', 'ź': 'z', 'Ẑ': 'z', 'ẑ': 'z', 'Ž': 'z', 'ž': 'z', 'Ż': 'z', 'ż': 'z', 'Ẓ': 'z', 'ẓ': 'z', 'Ẕ': 'z', 'ẕ': 'z', 'Ƶ': 'z', 'ƶ': 'z', 'Ȥ': 'z', 'ȥ': 'z', 'ʐ': 'z', 'ʑ': 'z', 'Ⱬ': 'z', 'ⱬ': 'z', 'Ǯ': 'z', 'ǯ': 'z', 'ƺ': 'z',
 }
 
+export const foldAccents = s => {
+	if (!s) return ''
+
+	return s.split('').map(c => {
+		const folded = accent_map[c]
+		return folded ? folded : c
+	}).join('')
+}
 
 
 
