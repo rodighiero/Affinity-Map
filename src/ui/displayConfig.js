@@ -9,10 +9,12 @@ import { select } from 'd3-selection'
 import a from '../tools/affinities'
 import state from '../settings/state'
 import config from '../settings/config'
+import { capitalize } from '../tools/generalTools'
 import { CE } from '../elements/cachedElements'
 
 
 const visibilityEntry = (fieldName, privateAccess, name = fieldName, requireCacheFlush) => ({
+	name: capitalize(name),
 	clbk(checked, map) {
 		config.visibility[fieldName] = checked
 
@@ -53,6 +55,7 @@ export default (map, privateAccess) => {
 	const setAffinityCat = () => {
 		// const affCat = configCats[0]//.find(o => o.name === 'Arrange Laboratories by:')
 		configCats[0].children = a.orderedAcronyms().map(d => ({
+			name: capitalize(a.name(d)),
 			clbk(checked) {
 				state.distances[d] = checked
 				map.restart()
