@@ -17,6 +17,7 @@ export const init = data => {
 	const graph = data.graph
 
 	state.init(data)
+
 	a.init(data.description)
 
 	window.state = state
@@ -24,31 +25,27 @@ export const init = data => {
 
 	const affs = a.acronyms()
 	const vAffs = a.visibleAcronyms()
+
 	// create an object like : { aff1:0, aff2:0, ...}
 	const nullAffinitiesObj = affs.reduce((o, v) => ({ ...o, [v]: 0 }), {})
 
-	// Splitting names of laboratories and scholars
-
+	// Split laboratory names
 	graph.nodes.forEach(lab => {
-		if (!lab.attr.enName) {
-			lab.attr.enName = ''
-		}
 		const i = middleSpace(lab.attr.enName)
 		lab.attr.enName_a = lab.attr.enName.slice(0, i)
 		lab.attr.enName_b = lab.attr.enName.slice(i + 1)
 	})
 
-	if (config.visibility.individuals)
-		graph.nodes.forEach(lab => {
-			lab.network.nodes.forEach(person => {
-				const i = middleSpace(person.attr.name)
-				person.attr.name_a = person.attr.name.slice(0, i)
-				person.attr.name_b = person.attr.name.slice(i + 1)
-			})
+	// Split scholar names
+	graph.nodes.forEach(lab => {
+		lab.network.nodes.forEach(person => {
+			const i = middleSpace(person.attr.name)
+			person.attr.name_a = person.attr.name.slice(0, i)
+			person.attr.name_b = person.attr.name.slice(i + 1)
 		})
+	})
 
 	// Initialize chord diagrams and ribbon
-
 	state.chordLayouts = graph.nodes.reduce((o, node) => {
 		// create an empty matrix, if its current length is 0
 		if (node.network.matrix.length === 0) {
@@ -64,12 +61,10 @@ export const init = data => {
 
 	// compute the mean link.sizes values, store them into link.std
 	// Set metrics.values for the links
-
 	const meanLinkValue = graph.links.reduce((o, link) => {
 		affs.forEach(k => o[k] += link.metrics.values[k] / graph.links.length)
 		return o
 	}, { ...nullAffinitiesObj })
-
 
 	graph.links.forEach(link => {
 		link.metrics.std = a.acronyms().reduce((o, aff) => {

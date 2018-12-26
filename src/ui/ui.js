@@ -188,10 +188,15 @@ export default () => {
 	}
 
 	that.init = (data, privateAccess) => {
+
+		console.log(privateAccess)
+
 		initData(data)
+		
 		state.initGraphs(data.graph)
 
 		const { graph } = data
+
 		that.privateAccess = privateAccess
 
 		if (config.visibility.filter && !config.client.isMobile) {
@@ -199,7 +204,7 @@ export default () => {
 		} else { document.getElementById('input_bar').style = 'display:none' }
 
 		// yearSlider(data.description.availableYears).init(that)
-		state.init(data)
+		
 		that.map = Map()
 
 		checkboxes(that.map)
