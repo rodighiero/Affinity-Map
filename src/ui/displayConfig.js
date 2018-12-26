@@ -24,8 +24,8 @@ const visibilityEntry = (fieldName, privateAccess, name = fieldName, requireCach
 
 		map.updateImage()
 	},
-	dft: config.visibility[fieldName],
-	disabled: !privateAccess,
+	dft: (privateAccess || config.availableForPublic[fieldName]) && config.visibility[fieldName],
+	disabled: !privateAccess && !config.availableForPublic[fieldName],
 })
 
 

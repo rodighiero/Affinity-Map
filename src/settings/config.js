@@ -47,6 +47,21 @@ export default {
 		orbits: true,
 	},
 
+	availableForPublic: {
+		acronym: true,
+		chords: true,
+		filter: true,
+		individuals: false,
+		institutions: false,
+		keywords: false,
+		links: true,
+		nodes: true,
+		satellites: true,
+		headNames: true,
+		labNames: true,
+		orbits: true,
+	},
+
 	// Zoom settings
 	zoom: {
 		min: .1,
