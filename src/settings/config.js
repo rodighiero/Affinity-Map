@@ -1,7 +1,6 @@
 export default {
-	
 	years:[2017],
-
+	// Node configuration
 	node: {
 		arc: {
 			max: 2,
@@ -14,6 +13,7 @@ export default {
 		scholarThickness: 4,
 	},
 
+	// Satellite configuration
 	satellite: {
 		width: {
 			empty: .2,
@@ -24,12 +24,14 @@ export default {
 		radius: 3,
 	},
 
+	// Screen information
 	screen: {
 		width: null,
 		height: null,
 		density: 1,
 	},
 
+	// Graphical elements visibility
 	visibility: {
 		acronym: true,
 		chords: true,
@@ -45,6 +47,7 @@ export default {
 		orbits: true,
 	},
 
+	// Zoom settings
 	zoom: {
 		min: .1,
 		init: .3,

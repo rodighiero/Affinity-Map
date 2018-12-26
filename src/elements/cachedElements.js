@@ -139,7 +139,7 @@ const cachedElements = () => {
 	}
 
 	that.init = () => {
-		that.nodeCanvasSize = config.client.isMobile || config.client.isTablet ? 110 : 200
+		that.nodeCanvasSize = config.client.isMobile || config.client.isTablet || !config.private ? 110 : 200
 		that.satCanvasSize = 14
 		that.nodeCache = canvasContextCache(that.nodeCanvasSize).init()
 		that.satCache = canvasContextCache(that.satCanvasSize).init()
