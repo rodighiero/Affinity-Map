@@ -5,7 +5,7 @@ import { max } from 'd3-array'
 import s from '../settings/config'
 import state from '../settings/state'
 import { zoomToExtent } from './zoom'
-import initPairs from '../tools/pairs'
+import { initPairs } from '../tools/generalTools'
 
 import spinner from '../ui/spinner'
 
