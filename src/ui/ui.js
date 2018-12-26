@@ -190,6 +190,7 @@ export default () => {
 
 	that.init = (data, privateAccess) => {
 		
+		
 		initData(data)
 		state.initGraphs(data.graph)
 		
@@ -216,9 +217,11 @@ export default () => {
 
 		// set the reset button onClick callback
 		select('#fullextent').on('click', () => zoomToExtent(3000))
+		select('#reset').on('click', () => resetFilter(graph))
 
 		// show all div hidden until ui is intitialized
 		window.addEventListener('resize', onWindowResize)
+		select(window).on('keyup', () => { if (event.keyCode === 9) { select('input[type=text]').node().focus() } })
 		select('#spinnerContainer').remove()
 
 		document.getElementById('container').style.cssText = 'display:visible;'
