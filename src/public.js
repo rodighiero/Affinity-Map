@@ -1,23 +1,19 @@
 import config from './settings/config'
+import { setInstitutionsFromBackend } from './main/init'
 import UI from './ui/ui'
 
-import 'marx-css/css/marx.css'
+require('marx-css/css/marx.css')
 
-import '../assets/css/mainSpinner.css'
-import '../assets/css/credits.css'
-import '../assets/css/general.css'
-import '../assets/css/toggle.css'
+require('../assets/css/mainSpinner.css')
+require('../assets/css/inputBar.css')
+require('../assets/css/credits.css')
+require('../assets/css/general.css')
+require('../assets/css/toggle.css')
 
+config.private = true
 
+const json = require('../assets/data.json')
 
-config.visibility.individuals = false
-config.visibility.institutions = false
+console.log(json)
 
-config.private = false
-
-
-fetch('/api/public/network', { credentials: 'include' }).then(d => d.json())
-	.then(resp => {
-		const data = resp.result		
-		UI().init(data)
-	})
+UI().init(json, true)

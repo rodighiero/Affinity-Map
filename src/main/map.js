@@ -1,4 +1,3 @@
-import 'fpsmeter'
 import { select } from 'd3-selection'
 
 import Simulation from './simulation'
@@ -9,16 +8,12 @@ import { drawSatellites, drawNodes } from '../elements/cachedElements'
 import drawLinks from '../elements/links'
 import computeKeywords from '../elements/keywords'
 
-const meter = state.debug
-	? new FPSMeter(document.getElementById('fps'))
-	: undefined
-
-
 /**
  * A map is responsible to draw and maintain the simulation on the canvas.
  * It handles the engine that display the network whenever it's needed.
  */
-export default () => {
+
+ export default () => {
 	const that = {}
 
 	let rendering = false
@@ -36,7 +31,7 @@ export default () => {
 	const drawImage = forceScale => {
 		const graph = getCurrentGraph()
 		if (state.zoomTransform) {
-			if (meter) meter.tickStart()
+			// if (meter) meter.tickStart()
 			state.context.setTransform(state.zoomTransform.k * config.screen.density, 0, 0,
 				state.zoomTransform.k * config.screen.density,
 				state.zoomTransform.x * config.screen.density,
@@ -52,7 +47,7 @@ export default () => {
 			if (config.visibility.satellites) drawSatellites(graph.links, forceScale)
 			if (config.visibility.keywords) computeKeywords(graph.links, _isConverged, () => { drawImage() })
 
-			if (meter) meter.tick()
+			// if (meter) meter.tick()
 
 		}
 	}

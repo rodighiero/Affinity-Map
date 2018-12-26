@@ -1,12 +1,11 @@
 import { select, event } from 'd3-selection'
-// import showdown from 'showdown'
-
 
 import { init as initData } from '../main/init'
 import Map from '../main/map'
 import { zoomInit, zoomToExtent } from '../main/zoom'
 import config from '../settings/config'
 
+// import choicesFilterTool from './filter'
 import canvasInteractionTool from './canvasInteractionTool'
 import displayConfig from './displayConfig'
 import yearSlider from './yearSlider'
@@ -189,36 +188,32 @@ export default () => {
 	}
 
 	that.init = (data, privateAccess) => {
-		
-		
 		initData(data)
 		state.initGraphs(data.graph)
-		
+
 		const { graph } = data
 		that.privateAccess = privateAccess
-		
+
+		if (config.visibility.filter && !config.client.isMobile) {
+			// that.cft = choicesFilterTool(previewLabSet, filterLabs).init(privateAccess)
+		} else { document.getElementById('input_bar').style = 'display:none' }
 
 		// yearSlider(data.description.availableYears).init(that)
-		
 		state.init(data)
 		that.map = Map()
-		
-		
+
 		checkboxes(that.map)
 		zoomInit(that.map)
-		
-		
+
 		const dp = displayConfig(that.map, privateAccess).init()
 		modalClick(dp)
-		
+
 		if (that.cft) { that.cft.setGraph(graph) }
 		that.cit = canvasInteractionTool(graph).init()
-		
 
 		// set the reset button onClick callback
 		select('#fullextent').on('click', () => zoomToExtent(3000))
 		select('#reset').on('click', () => resetFilter(graph))
-
 		// show all div hidden until ui is intitialized
 		window.addEventListener('resize', onWindowResize)
 		select(window).on('keyup', () => { if (event.keyCode === 9) { select('input[type=text]').node().focus() } })

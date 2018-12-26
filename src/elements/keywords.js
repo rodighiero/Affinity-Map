@@ -1,12 +1,10 @@
 import state from '../settings/state'
 import { staticColor } from '../settings/colors'
-// import { drawKeywords } from './graphics'
+import { drawKeywords } from './graphics'
 import aff from '../tools/affinities'
 
 import spinner from '../ui/spinner'
 import config from '../settings/config'
-
-// TODO - All is blocked
 
 // check effective and potential keywords
 
@@ -98,7 +96,7 @@ export default (links, isAlmostConverged, clbk) => {
 			} else {
 				if (cachedContent && cachedContent.status === 'DONE') {
 					o.ready.push({
-						keywords: cachedContent.keywords.filter((v, i, a) => a.indexOf(v) === i),
+						keywords: cachedContent.keywords.filter((v,i,a)=>a.indexOf(v)===i),
 						color: cachedContent.color,
 						x: (n1.x < n2.x ? n1.x : n2.x) + a / 2,
 						y: (n1.y < n2.y ? n1.y : n2.y) + b / 2,
@@ -114,7 +112,7 @@ export default (links, isAlmostConverged, clbk) => {
 		keywordRequest(labCouples.request, clbk)
 	}
 
-	// if (labCouples.ready.length > 0) {
-	// 	drawKeywords(labCouples.ready)
-	// }
+	if (labCouples.ready.length > 0) {
+		drawKeywords(labCouples.ready)
+	}
 }

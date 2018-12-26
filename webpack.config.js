@@ -1,8 +1,6 @@
 // const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-
 
 module.exports = {
 	entry: {
@@ -33,14 +31,6 @@ module.exports = {
 				test: /\.(png|jpg|gif|svg|eot|ttf|md)$/,
 				loader: 'url-loader',
 			},
-			{
-				test: /\.js$/,
-				exclude: [/node_modules\/.*/, /.*\/Choices\/.*/],
-				loader: 'babel-loader',
-				query: {
-					presets: ['es2015', 'stage-2'],
-				},
-			},
 		],
 	},
 
@@ -58,7 +48,6 @@ module.exports = {
 			template: path.join(__dirname, 'assets/private.html'),
 			filename: path.join(__dirname, '../build/dist', 'private.html'),
 		}),
-		new FaviconsWebpackPlugin('./assets/img/favicon.png'),
 	],
 
 	devServer: {
@@ -73,16 +62,4 @@ module.exports = {
 			},
 		},
 	},
-	// optimization: {
-	// 	runtimeChunk: 'single',
-	// 	splitChunks: {
-	// 		cacheGroups: {
-	// 			vendor: {
-	// 				test: /[\\/]node_modules[\\/]/,
-	// 				name: 'vendors',
-	// 				chunks: 'all',
-	// 			},
-	// 		},
-	// 	},
-	// },
 }
