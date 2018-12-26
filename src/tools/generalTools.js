@@ -34,8 +34,6 @@ const accent_map = {
 
 
 
-export const capitalize = s => s.slice(0, 1).toUpperCase() + s.slice(1)
-
 export const middleSpace = string => {
 	const middle = Math.round(string.length / 2)
 	for (let i = middle, j = middle; i < string.length || j >= 0; i++ , j--) {
