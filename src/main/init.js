@@ -5,7 +5,7 @@ import MobileDetect from 'mobile-detect'
 import config from '../settings/config'
 import state from '../settings/state'
 import lab from '../elements/chord'
-import { middleSpace } from '../tools/generalTools'
+import middleSpace from '../tools/central'
 
 import a from '../tools/affinities'
 import { initCaches } from '../elements/cachedElements'
