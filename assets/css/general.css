@@ -1,0 +1,353 @@
+/******************************************************************************
+     * Basic elements
+******************************************************************************/
+
+body, html {
+	width: 100%;
+	height: 100%;
+	color: white;
+	background: rgb(40, 40, 40);
+	font-family: 'Arial' !important;
+}
+
+input:focus {
+	box-shadow: none !important;
+}
+
+button {
+	cursor: pointer;
+}
+
+button:disabled {
+	background: #b1aca9!important;
+	border-color: #b1aca9!important
+}
+
+/******************************************************************************
+	 * Containers		
+******************************************************************************/
+
+.interface.bottom {
+	position: absolute;
+	display: block;
+	width: 100%;
+	bottom: 0px;
+	height: 65px;
+}
+
+#container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+#diagram, #legenda, #logo, #title {
+	position: absolute;
+	display: block;
+}
+
+/******************************************************************************
+     * Diagram		
+******************************************************************************/
+
+#diagram {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: -17px;
+	bottom: 0;
+	left: 0;
+	overflow-y: scroll;
+}
+
+/******************************************************************************
+     * Toggle buttons for affinity activation		
+******************************************************************************/
+
+#toggle-btn {
+	left: 10px;
+	bottom: 50%;
+	width: 150px;
+	text-align: center;
+	flex-grow: 1;
+}
+
+#toggle-btn div {
+	text-align: left;
+	margin-bottom: 8px;
+}
+
+#toggle-btn text {
+	position: absolute;
+	margin-top: 3px;
+	margin-left: 8px;
+}
+
+/******************************************************************************
+     * Legenda		
+******************************************************************************/
+
+#legenda {
+	width: 100px;
+	height: 100px;
+	top: 0;
+	right: 0;
+	background-color: transparent;
+	background-image: url('../img/legenda.png');
+	background-size: 100px;
+}
+
+/******************************************************************************
+     * Logo		
+******************************************************************************/
+
+#logo {
+	position: absolute;
+	top: 190px;
+	left: 10px;
+	background-color: transparent;
+	background-image: url('../svg/logo.svg');
+	background-size: 250px;
+	width: 250px;
+	height: 45px;
+	background-position: center;
+}
+
+#title {
+	font-weight: 600;
+	font-size: 14px;
+	letter-spacing: 2px;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	visibility: visible;
+	color: #FFF;
+}
+
+/******************************************************************************
+     * Access to the private page		
+******************************************************************************/
+
+div.loginout {
+	position: absolute;
+	left: 42.5%;
+	font-size: 20px;
+	top: 10px;
+	border: 0;
+	background-color: transparent;
+}
+
+.choiceIcon {
+	position: relative;
+	height: 12px;
+	top: 2px;
+}
+
+
+/******************************************************************************
+     * Fullextent		
+******************************************************************************/
+
+#fullextent {
+	position: absolute;
+	cursor: pointer;
+	top: 7px;
+	left: 7px;
+	z-index: 10;
+}
+
+#fullextent a {
+	display: block;
+	width: 45px;
+	height: 40px;
+	background-image: url('../svg/fullextent.svg');
+	background-size: 36px;
+}
+
+
+/******************************************************************************
+     * fps counter
+******************************************************************************/
+
+#fps {
+	display: inline-block;
+	position: relative;
+	width: 50px;
+}
+
+#fps * {
+	border: 0 !important;
+	background-color: transparent !important;
+	line-height: 40px !important;
+	height: 40px !important;
+	font-size: 10px !important;
+	padding: 0 !important;
+	position: relative !important;
+	text-shadow: none !important;
+	top: 0 !important;
+	left: 0 !important;
+	text-align: left !important;
+}
+
+#fps div div:first-child::before {
+	content: "(FPS " !important;
+}
+#fps div div:first-child::after {
+	content: ")" !important;
+}
+
+#fps div div:last-child {
+	display: none !important;
+}
+
+/******************************************************************************
+ * styles for settings panel
+******************************************************************************/
+
+#displayConfigPanel {
+	height: 300px;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	bottom: 0;
+	left: 0;
+	transition: 0.5s;
+	overflow: hidden;
+	background-color: rgba(30, 30, 30, 0.8);
+}
+
+#displayConfigPanel.closed {
+	height: 40px;
+	padding-top: 0px;
+	visibility: visible;
+}
+
+#dcpCloseBtn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.tgl-btn {
+	display: inline-block!important;
+}
+
+.tgl+.tgl-btn {
+	height: 1.3em!important;
+	width: 2.5em!important;
+}
+
+.tglBtnContainer>text {
+	position: absolute;
+	margin-left: 10px;
+	font-size: 12px;
+	display: inline-flex;
+}
+
+#displayConfigPanel>div>div>h3 {
+	font-size: 12px!important;
+}
+
+#dcpOpenBtn {
+	right: 4px;
+	position: absolute;
+	background-image: url('../svg/menu-open.svg');
+	top: 4px;
+	height: 35px!important;
+	width: 35px;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+#dcpOpenBtn.closed {
+	transition: 0.5s;
+	background-image: url('../svg/menu-closed.svg');
+	top: 3px;
+	visibility: visible;
+}
+
+#header {
+	height: 35px!important;
+}
+
+/******************************************************************************
+ * content for settings panel
+******************************************************************************/
+
+#dcpContainer {
+	height: 150px!important;
+	display: flex;
+	position: relative;
+	top: 20px;
+	z-index: 1;
+}
+
+#dcpContainer h3 {
+	font-size: 12px;
+	letter-spacing: .05em;
+	margin: 0 0 15px 0;
+	font-weight: 600;
+}
+
+#dcpContainer #explanation {
+	flex-grow: 1;
+	width: 150px;
+	max-width: 50%;
+	padding: 0 10px;
+}
+
+#dcpContainer #explanation>#shortAbout {
+	margin: 0 0 10px;
+	font-size: 12px;
+}
+
+#dcpContainer #explanation>#about {
+	margin-top: 22px;
+}
+
+#dcpContainer #controls {
+	flex-grow: 4;
+}
+
+#dcpContainer #controls {
+	display: flex;
+	flex-flow: row;
+}
+
+#dcpContainer #controls>div {
+	flex-grow: 1;
+	padding: 0 10px;
+	border-left: 1px solid #666666;
+	font-size: 12px;
+	font-weight: 400;
+}
+
+#dcpContainer #explanation a {
+	text-decoration: underline;
+	color: #EB5D00;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+#dcpContainer #explanation p {
+	margin-bottom: 1px;
+}
+
+#dcpContainer #explanation button.asLink {
+	background: none!important;
+	border: none;
+	padding: 0!important;
+	font: inherit;
+	cursor: pointer;
+	color: #EB5D00;
+	text-decoration: underline;
+	font-size: 12px;
+}
+
+#title>div.titleAndSpinner {
+	position:relative;
+	left:-28px;
+}
