@@ -10,11 +10,8 @@ require('../assets/css/credits.css')
 require('../assets/css/general.css')
 require('../assets/css/toggle.css')
 
-config.private = true
+const json = require('../assets/data.json')
 
-fetch('/api/private/institutions?years=2017', { credentials: 'include' }).then(d => d.json())
-	.then(data => config.institutions = setInstitutionsFromBackend(data.result))
+console.log(json)
 
-
-fetch('/api/private/network?years=2017', { credentials: 'include' }).then(d => d.json())
-	.then(resp => UI().init(resp.result, true))
+UI().init(json, true)

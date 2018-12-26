@@ -3,10 +3,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-	entry: {
-		public: './src/public.js',
-		private: './src/private.js',
-	},
+	entry: './src/index.js',
 
 	output: {
 		path: path.join(__dirname, '../build/dist'),
@@ -20,7 +17,6 @@ module.exports = {
 		symlinks: false,
 	},
 
-
 	module: {
 		rules: [
 			{
@@ -28,25 +24,22 @@ module.exports = {
 				use: ['style-loader', 'css-loader'],
 			},
 			{
-				test: /\.(png|jpg|gif|svg|eot|ttf|md)$/,
+				test: /\.(png|jpg|gif|svg)$/,
 				loader: 'url-loader',
+			},
+			{
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				use: ['babel-loader']
 			},
 		],
 	},
 
 	plugins: [
-		// new CleanWebpackPlugin(['../build/dist']),
 		new HtmlWebpackPlugin({
 			title: 'Boot App',
-			chunks: ['public'],
-			template: path.join(__dirname, 'assets/public.html'),
+			template: path.join(__dirname, 'assets/index.html'),
 			filename: path.join(__dirname, '../build/dist', 'index.html'),
-		}),
-		new HtmlWebpackPlugin({
-			title: 'Boot App',
-			chunks: ['private'],
-			template: path.join(__dirname, 'assets/private.html'),
-			filename: path.join(__dirname, '../build/dist', 'private.html'),
 		}),
 	],
 
