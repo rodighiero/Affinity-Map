@@ -1,58 +1,47 @@
-// const webpack = require('webpack')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
-	entry: './src/index.js',
-
-	output: {
-		path: path.join(__dirname, '../build/dist'),
-		filename: '[name]-[hash].bundle.js',
-	},
-
-	resolve: {
-		modules: [path.join(__dirname, 'src'), 'node_modules'],
-		extensions: ['.js'],
-		mainFields: ['browser', 'module', 'main'],
-		symlinks: false,
-	},
-
 	module: {
 		rules: [
 			{
-				test: /\.css$/,
-				use: ['style-loader', 'css-loader'],
+				test: /\.(png|svg)$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {},
+					},
+				],
 			},
 			{
-				test: /\.(png|jpg|gif|svg)$/,
-				loader: 'url-loader',
-			},
-			{
-				test: /\.(js|jsx)$/,
+				test: /\.js$/,
 				exclude: /node_modules/,
-				use: ['babel-loader']
+				use: {
+					loader: "babel-loader"
+				}
 			},
-		],
+			{
+				test: /\.html$/,
+				use: [
+					{
+						loader: "html-loader",
+						options: { minimize: true }
+					}
+				]
+			},
+			{
+				test: /\.css$/,
+				use: [MiniCssExtractPlugin.loader, "css-loader"]
+			}
+		]
 	},
-
 	plugins: [
-		new HtmlWebpackPlugin({
-			title: 'Boot App',
-			template: path.join(__dirname, 'assets/index.html'),
-			filename: path.join(__dirname, '../build/dist', 'index.html'),
+		new HtmlWebPackPlugin({
+			template: "./assets/index.html",
+			filename: "./index.html"
 		}),
-	],
-
-	devServer: {
-		contentBase: path.join(__dirname, '../build/dist'),
-		compress: true,
-		port: 3000,
-		proxy: {
-			'/api/*': {
-				target: 'http://localhost:8080/',
-				changeOrigin: true,
-				pathRewrite: url => url.replace(/^\/api/, ''),
-			},
-		},
-	},
-}
+		new MiniCssExtractPlugin({
+			filename: "[name].css",
+			chunkFilename: "[id].css"
+		})
+	]
+};
