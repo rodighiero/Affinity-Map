@@ -21,16 +21,23 @@ const state = {
 
 	// some helper functions
 	init: data => {
-		state.initialGraph = { nodes: data.graph.nodes, links: data.graph.links }
 
-		// initialize state.distances using default value from description
-		state.distances = data.description.affinities.reduce((o, aff) => ({
+		// Set initial graph
+		state.initialGraph = {
+			nodes: data.graph.nodes,
+			links: data.graph.links
+		}
+
+		// Set affinities
+		state.distances = data.description.affinities.reduce((o, affinity) => ({
 			...o,
-			[aff.acronym]: aff.default,
+			[affinity.acronym]: affinity.default,
 		}), {})
 
 		state.dataDescription = data.description
 	},
+
+	
 	initGraphs(graph) {
 		graph.nodes.forEach(n => n.visibility = true)
 

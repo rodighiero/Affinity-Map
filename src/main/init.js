@@ -109,17 +109,3 @@ export const init = data => {
 
 	initCaches()
 }
-
-
-//
-// Initialization of institutions
-//
-
-export const setInstitutionsFromBackend = institutions =>
-	institutions.map(lab => {
-		const s = new Set(lab.value) // keep only unique institution name
-		return {
-			Acronym: lab.key,
-			Institutions: [...s].map(o => ({ Name: o })).sort((a, b) => a.Name.localeCompare(b.Name)),
-		}
-	})

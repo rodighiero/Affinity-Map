@@ -18,7 +18,6 @@ const elements = {
 	link: rgb(80, 80, 80).toString(),
 	orbits: rgb(50, 50, 50).toString(),
 	externalNode: rgb(60, 60, 60),
-	institutions: rgb(120, 120, 120).toString(),
 	keywordsOn: rgb(220, 220, 220).toString(),
 	keywordsOff: rgb(150, 150, 150).toString(),
 	transparent: rgb(0, 0, 0, 0).toString(),

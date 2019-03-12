@@ -33,9 +33,6 @@ export default (previewLabSet, filterLabs) => {
 	const invCats = Object.keys(cats).reduce((o, k) => ({ ...o, [cats[k]]: k }), {})
 	const catNames = {
 		kw: ['keyword', 'keywords'],
-		iCountry: ['Institution country', 'Institution countries'],
-		iName: ['Institution name', 'Institution names'],
-		iClass: ['Institution classification', 'Institution classifications'],
 		inst: ['Institute', 'Institutes'],
 		themClus: ['Thematic cluster', 'Thematic clusters'],
 		lab: ['Zoom to Laboratory', 'Laboratories'],
@@ -73,9 +70,6 @@ export default (previewLabSet, filterLabs) => {
 			//	institutes
 			// 	themClusters
 			//	laboratories
-			// 	institutions classifications
-			//	institutions countries
-			// 	institutions names
 			// 	keywords
 
 			const addCat = (cat, i) => {

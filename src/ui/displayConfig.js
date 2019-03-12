@@ -68,7 +68,7 @@ export default (map, privateAccess) => {
 	const setNetworkCat = privateAccess => {
 		configCats[1]//.find(o => o.name === 'Network Display')
 			.children =
-			[['satellites'], ['institutions', undefined, true], ['keywords'], ['links', 'Links']]
+			[['satellites'], ['keywords'], ['links', 'Links']]
 				.map(d => visibilityEntry(d[0], privateAccess, d[1], d[2]))
 		if (privateAccess) {
 			configCats[1].children.push({

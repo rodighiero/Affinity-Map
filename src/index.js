@@ -1,5 +1,4 @@
 import config from './settings/config'
-import { setInstitutionsFromBackend } from './main/init'
 import UI from './ui/ui'
 
 require('marx-css/css/marx.css')

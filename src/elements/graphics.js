@@ -140,36 +140,6 @@ export const drawSatelliteAcronym = (text, ctx) => {
 
 
 
-const drawInstitutions = (node, context) => {
-
-	if (config.institutions) {
-		context.scale(0.1, 0.1)
-		const lab = config.institutions.filter(obj =>
-			obj.Acronym === node.attr.name
-		)[0] // Select the lab
-
-		if ((typeof lab !== 'undefined') && (lab.Institutions.length > 0)) {
-
-			lab.Institutions.forEach((d, i) => {
-
-				let _o = Math.asin(i / lab.Institutions.length * 2 - 1)
-				if (i % 2)
-					_o += Math.PI
-				const x = 1.02 * config.node.radius * Math.cos(_o),
-					y = 1.02 * config.node.radius * Math.sin(_o),
-					align = Math.cos(_o) > 0 ? 'left' : 'right'
-
-				context.font = 'normal 300 13pt Arial'
-				context.fillStyle = staticColor('institutions')
-				context.textAlign = align
-				context.fillText(d.Name, x * 10, y * 10)
-
-			})
-		}
-		context.scale(10, 10)
-	}
-}
-
 /******************************************************************************
 *
 * Nodes
@@ -261,10 +231,6 @@ export const drawNode = (node, context, labNameScale) => {
 		drawHead(node.attr.labProfNames, context)
 	if (labNameScale)
 		context.scale(1 / labNameScale, 1 / labNameScale)
-
-	// Institutions
-	if (config.visibility.institutions && !config.client.isMobile && !config.client.isTablet)
-		drawInstitutions(node, context)
 
 	// Set visibility
 	if (!node.visibility)

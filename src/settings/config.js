@@ -37,7 +37,6 @@ export default {
 		chords: true,
 		filter: true,
 		individuals: true,
-		institutions: true,
 		keywords: false,
 		links: true,
 		nodes: true,
