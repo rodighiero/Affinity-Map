@@ -16,9 +16,9 @@ const Simulation = map => {
 		simulation: undefined,
 	}
 
-	const affinities = Object.keys(state.distances)
+	const affinities = Object.keys(state.activation)
 	const getValue = link => affinities.reduce((value, affinity) =>
-		value + (state.distances[affinity] ? link.metrics.std[affinity] : 0), 0)
+		value + (state.activation[affinity] ? link.metrics.std[affinity] : 0), 0)
 
 	let setLinksMax = links => max(links, getValue)
 

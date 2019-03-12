@@ -57,7 +57,7 @@ export default (map, privateAccess) => {
 		configCats[0].children = a.orderedAcronyms().map(d => ({
 			name: capitalize(a.name(d)),
 			clbk(checked) {
-				state.distances[d] = checked
+				state.activation[d] = checked
 				map.restart()
 				CE.flushNodes()
 			},

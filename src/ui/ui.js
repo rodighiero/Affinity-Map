@@ -45,7 +45,7 @@ export default () => {
 
 		inputs.on('change', function (d) {
 			const inputValue = select(this).property('checked')
-			state.distances[d] = inputValue
+			state.activation[d] = inputValue
 			map.restart()
 		})
 

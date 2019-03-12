@@ -7,11 +7,10 @@
 *  - simulation state
 ******************************************************************************/
 const state = {
+	activation: undefined,
 	canvas: undefined,
 	chordLayouts: undefined,
 	context: undefined,
-	dataDescription: undefined,
-	distances: undefined,
 	initialGraph: undefined,
 	pairs: undefined,
 	linksMax: undefined,
@@ -28,13 +27,11 @@ const state = {
 			links: data.graph.links
 		}
 
-		// Set affinities
-		state.distances = data.description.affinities.reduce((o, affinity) => ({
+		// Set affinity activation
+		state.activation = data.affinities.reduce((o, affinity) => ({
 			...o,
 			[affinity.acronym]: affinity.default,
 		}), {})
-
-		state.dataDescription = data.description
 	},
 
 	

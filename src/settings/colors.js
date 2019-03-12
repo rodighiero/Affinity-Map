@@ -31,5 +31,5 @@ export function staticColor(code) {
 
 // Get institute colors
 export function unitColor(institute, affinity) {
-	return state.distances[affinity] ? enac[institute].toString() : enac[institute].brighter(1.5).toString()
+	return state.activation[affinity] ? enac[institute].toString() : enac[institute].brighter(1.5).toString()
 }

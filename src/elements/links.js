@@ -15,7 +15,7 @@ export default (links, ctx = state.context) => {
 	const linksToDraw = links.reduce((object, link) => {
 
 		// sum metrics.std[x] values, if state.distance[x] is enabled
-		const value = affinities.reduce((o, aff) => o + (state.distances[aff] ? link.metrics.std[aff] : 0), 0)
+		const value = affinities.reduce((o, aff) => o + (state.activation[aff] ? link.metrics.std[aff] : 0), 0)
 
 		if (value > 0) {
 			const thickness = _s(value)

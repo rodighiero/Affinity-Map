@@ -17,7 +17,7 @@ export const init = data => {
 	window.config = config
 
 	state.init(data)
-	affinities.init(data.description)
+	affinities.init(data.affinities)
 
 
 

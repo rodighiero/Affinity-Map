@@ -6,15 +6,15 @@ const state = {
 }
 
 export default {
-	init(dataDescription) {
-		state.acronyms = dataDescription.affinities.map(desc => desc.acronym).sort()
-		state.names = dataDescription.affinities.map(desc => desc.name)
-		state.keyDescription = dataDescription.affinities.reduce((o, desc) => {
+	init(affinities) {
+		state.acronyms = affinities.map(desc => desc.acronym).sort()
+		state.names = affinities.map(desc => desc.name)
+		state.keyDescription = affinities.reduce((o, desc) => {
 			return { ...o, [desc.acronym]: desc }
 		}, {})
-		state.description = dataDescription.affinities
+		state.description = affinities
 
-		state.orderedAcronyms = dataDescription.affinities.sort((a,b)=>{return a.order-b.order}).map(desc => desc.acronym)
+		state.orderedAcronyms = affinities.sort((a,b)=>{return a.order-b.order}).map(desc => desc.acronym)
 	},
 	acronyms() {
 		return state.acronyms
