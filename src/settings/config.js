@@ -6,7 +6,7 @@ export default {
 			max: 2,
 		},
 		distance: 110,
-		gap: .5,
+		gap: 2,
 		min: .1,
 		max: 8,
 		radius: 55,
