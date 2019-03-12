@@ -21,17 +21,18 @@ const state = {
 	// some helper functions
 	init: data => {
 
+		// Set affinity activation
+		state.activation = data.affinities.reduce((o, affinity) => ({
+			...o, [affinity.acronym]: true,
+		}), {})
+		
+
+
 		// Set initial graph
 		// state.initialGraph = {
 		// 	nodes: data.graph.nodes,
 		// 	links: data.graph.links
 		// }
-
-		// Set affinity activation
-		state.activation = data.affinities.reduce((o, affinity) => ({
-			...o,
-			[affinity.acronym]: affinity.default,
-		}), {})
 	},
 
 	

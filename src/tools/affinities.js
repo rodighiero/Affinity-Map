@@ -1,7 +1,7 @@
 const state = {
 	acronyms: [],
+	affinities: [],
 	names: [],
-	description: [],
 	keyDescription: {},
 }
 
@@ -12,7 +12,7 @@ export default {
 		state.keyDescription = affinities.reduce((o, desc) => {
 			return { ...o, [desc.acronym]: desc }
 		}, {})
-		state.description = affinities
+		state.affinities = affinities
 
 		state.orderedAcronyms = affinities.sort((a,b)=>{return a.order-b.order}).map(desc => desc.acronym)
 	},
@@ -30,19 +30,24 @@ export default {
 	defaultStatus(i) {
 		return state.keyDescription[i].default
 	},
+
 	visibleAcronyms(){
-		if( state.visibleAffs ){
-			return state.visibleAffs
-		} else {
-			state.visibleAffs = state.description.filter(o=>o.visibility===true).map(o=>o.acronym).reverse()
-			return state.visibleAffs
-		}
+		// if( state.visibleAffs ){
+		// 	return state.visibleAffs
+		// } else {
+
+		// 	// console.log(state.affinities)
+
+		// 	state.visibleAffs = state.affinities.filter(o=>o.visibility===true).map(o=>o.acronym).reverse()
+		// 	return state.visibleAffs
+		// }
+		return ['adv', 'pub', 'tea']
 	},
 	reverseVisibleAcronyms(){
 		if( state.rvisibleAffs ){
 			return state.rvisibleAffs
 		} else {
-			state.rvisibleAffs = state.description.filter(o=>o.visibility===true).map(o=>o.acronym)
+			state.rvisibleAffs = state.affinities.filter(o=>o.visibility===true).map(o=>o.acronym)
 			return state.rvisibleAffs
 		}
 	},

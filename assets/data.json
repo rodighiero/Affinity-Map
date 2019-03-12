@@ -2,23 +2,19 @@
   "affinities": [
     {
       "name": "advising",
-      "acronym": "adv",
-      "default": true
+      "acronym": "adv"
     },
     {
       "name": "publication",
-      "acronym": "pub",
-      "default": true
+      "acronym": "pub"
     },
     {
       "name": "teaching",
-      "acronym": "tea",
-      "default": true
+      "acronym": "tea"
     },
     {
       "name": "keyword",
-      "acronym": "key",
-      "default": true
+      "acronym": "key"
     }
   ],
   "graph": {

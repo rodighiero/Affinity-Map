@@ -51,25 +51,25 @@ const keywordRequest = (pairs, clbk) => {
 	const allStringHashes = hashCode(allStrings)
 
 	spinner.start('keywords')
-	fetch(`/api/public/keywords?years=${config.years}&hash=${allStringHashes}`, {
-		credentials: 'include',
-		method: 'POST',
-		headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(requestPairs),
-	})
-		.then(d => d.json())
-		.then(({ result }) => {
-			result.forEach(v => {
-				const cacheElement = keywordCaches.get(v.key)
-				cacheElement.status = 'DONE'
-				cacheElement.keywords = v.keywords.map(keyword => keyword.kw)
-			})
-			spinner.stop('keywords')
-			clbk()
-		})
+	// fetch(`/api/public/keywords?years=${config.years}&hash=${allStringHashes}`, {
+	// 	credentials: 'include',
+	// 	method: 'POST',
+	// 	headers: {
+	// 		'Accept': 'application/json',
+	// 		'Content-Type': 'application/json',
+	// 	},
+	// 	body: JSON.stringify(requestPairs),
+	// })
+	// 	.then(d => d.json())
+	// 	.then(({ result }) => {
+	// 		result.forEach(v => {
+	// 			const cacheElement = keywordCaches.get(v.key)
+	// 			cacheElement.status = 'DONE'
+	// 			cacheElement.keywords = v.keywords.map(keyword => keyword.kw)
+	// 		})
+	// 		spinner.stop('keywords')
+	// 		clbk()
+	// 	})
 }
 
 // TODO : remove that if possible 

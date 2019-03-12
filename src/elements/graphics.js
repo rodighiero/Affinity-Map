@@ -155,17 +155,28 @@ export const drawNode = (node, context, labNameScale) => {
 	const chords = state.chordLayouts[node.attr.name].chords()
 	const groups = state.chordLayouts[node.attr.name].groups()
 
-	// Background
+	// // Background
 	drawInnerCircle(config.node.radius, staticColor('background'), context)
 
+
+
+
 	// Quantitative rings
-	const total = a.visibleAcronyms().reduce((total, key) => total + node.metrics.std[key], 0)
-	_s.domain([0, total])
-	a.visibleAcronyms().forEach(affinity => {
-		const _w = _s(node.metrics.std[affinity])
-		_r -= config.node.gap + _w
-		drawOuterCircle(_r + _w / 2, _w, unitColor(node.attr.institute, affinity), context)
-	})
+
+	// console.log(a.visibleAcronyms())
+	// console.log(node.metrics)
+
+
+	// const total = a.visibleAcronyms().reduce((total, key) => total + node.metrics.std[key], 0)
+	// _s.domain([0, total])
+
+
+
+	// a.visibleAcronyms().forEach(affinity => {
+	// 	const _w = _s(node.metrics.std[affinity])
+	// 	_r -= config.node.gap + _w
+	// 	drawOuterCircle(_r + _w / 2, _w, unitColor(node.attr.institute, affinity), context)
+	// })
 
 	// Scholars' names
 	_r -= config.node.gap + config.node.scholarThickness
@@ -185,31 +196,30 @@ export const drawNode = (node, context, labNameScale) => {
 		}
 	}
 
-	// Segments: visible affinities
-	const setBackground = () => {
-		_r -= config.node.gap + config.node.arc.max
-		drawOuterCircle(_r + config.node.arc.max / 2, config.node.arc.max, staticColor('lighterBackground'), context)
-	}
-	const scaleAff = scaleLinear().range([0, config.node.arc.max])
-	a.visibleAcronyms().forEach(aff => {
-		const hasAff = individual => node.network.nodes[individual.index].metrics.values[aff] > 0
-		scaleAff.domain([0, node.metrics.max[aff]])
-		setBackground()
-		if (node.attr.faculty === 'ENAC') {
-			groups.filter(hasAff).forEach(individual =>
-				drawArc(
-					_r + config.node.arc.max / 2,
-					scaleAff(node.network.nodes[individual.index].metrics.values[aff]),
-					individual.startAngle - Math.PI / 2, individual.endAngle - Math.PI / 2,
-					unitColor(node.attr.institute, aff),
-					context
-				)
-			)
-		}
-	})
+	// // Segments: visible affinities
+	// const setBackground = () => {
+	// 	_r -= config.node.gap + config.node.arc.max
+	// 	drawOuterCircle(_r + config.node.arc.max / 2, config.node.arc.max, staticColor('lighterBackground'), context)
+	// }
+	// const scaleAff = scaleLinear().range([0, config.node.arc.max])
+	// a.visibleAcronyms().forEach(aff => {
+	// 	const hasAff = individual => node.network.nodes[individual.index].metrics.values[aff] > 0
+	// 	scaleAff.domain([0, node.metrics.max[aff]])
+	// 	setBackground()
+	// 	if (node.attr.faculty === 'ENAC') {
+	// 		groups.filter(hasAff).forEach(individual =>
+	// 			drawArc(
+	// 				_r + config.node.arc.max / 2,
+	// 				scaleAff(node.network.nodes[individual.index].metrics.values[aff]),
+	// 				individual.startAngle - Math.PI / 2, individual.endAngle - Math.PI / 2,
+	// 				unitColor(node.attr.institute, aff),
+	// 				context
+	// 			)
+	// 		)
+	// 	}
+	// })
 
-	// Chords diagram
-	if (node.attr.faculty === 'ENAC') {
+	// // Chords diagram
 		if (config.visibility.chords) {
 			_r -= config.node.gap
 			const valid = chord => chord.source.value > 0 && chord.target.value > 0,
@@ -217,12 +227,12 @@ export const drawNode = (node, context, labNameScale) => {
 				_scaleTransparency = scaleLinear().domain([0, _max]).range([0.05, 0.2])
 			chords.filter(valid).forEach(chord => drawChord(chord, _scaleTransparency(chord.source.value), ribbon().context(context).radius(_r), context))
 		}
-	}
+
 
 	if (labNameScale)
 		context.scale(labNameScale, labNameScale)
 
-	// Laboratory informations
+	// // Laboratory informations
 	if (config.visibility.labNames)
 		drawName(node.attr.enName_a, node.attr.enName_b, context)
 	if (config.visibility.acronym)
@@ -232,7 +242,7 @@ export const drawNode = (node, context, labNameScale) => {
 	if (labNameScale)
 		context.scale(1 / labNameScale, 1 / labNameScale)
 
-	// Set visibility
+	// // Set visibility
 	if (!node.visibility)
 		drawInnerCircle(config.node.radius, staticColor('filteredBackground'), context)
 }
