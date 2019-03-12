@@ -5,7 +5,6 @@ import MobileDetect from 'mobile-detect'
 import config from '../settings/config'
 import state from '../settings/state'
 import lab from '../elements/chord'
-import { middleSpace } from '../tools/generalTools'
 
 import affinities from '../tools/affinities'
 import { initCaches } from '../elements/cachedElements'
@@ -22,22 +21,6 @@ export const init = data => {
 
 	// Object { aff1:0, aff2:0, ...}
 	const aObject = affinities.acronyms().reduce((o, v) => ({ ...o, [v]: 0 }), {})
-
-	// Split laboratory names
-	data.graph.nodes.forEach(lab => {
-		const i = middleSpace(lab.attr.enName)
-		lab.attr.enName_a = lab.attr.enName.slice(0, i)
-		lab.attr.enName_b = lab.attr.enName.slice(i + 1)
-	})
-
-	// Split scholar names
-	data.graph.nodes.forEach(lab => {
-		lab.network.nodes.forEach(person => {
-			const i = middleSpace(person.attr.name)
-			person.attr.name_a = person.attr.name.slice(0, i)
-			person.attr.name_b = person.attr.name.slice(i + 1)
-		})
-	})
 
 	// Initialize chord diagrams and ribbon
 	state.chordLayouts = data.graph.nodes.reduce((o, node) => {
