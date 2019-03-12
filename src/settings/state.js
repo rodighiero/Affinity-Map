@@ -11,7 +11,7 @@ const state = {
 	canvas: undefined,
 	chordLayouts: undefined,
 	context: undefined,
-	initialGraph: undefined,
+	// initialGraph: undefined,
 	pairs: undefined,
 	linksMax: undefined,
 	zoom: undefined,
@@ -22,10 +22,10 @@ const state = {
 	init: data => {
 
 		// Set initial graph
-		state.initialGraph = {
-			nodes: data.graph.nodes,
-			links: data.graph.links
-		}
+		// state.initialGraph = {
+		// 	nodes: data.graph.nodes,
+		// 	links: data.graph.links
+		// }
 
 		// Set affinity activation
 		state.activation = data.affinities.reduce((o, affinity) => ({

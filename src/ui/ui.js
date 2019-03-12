@@ -165,12 +165,12 @@ export default () => {
 	/******************************************************************************
 	 * Finish the UI initialization, once the data are arrived
 	 ******************************************************************************/
-	const resetFilter = () => {
-		state.initGraphs(state.initialGraph)
+	// const resetFilter = () => {
+	// 	state.initGraphs(state.initialGraph)
 
-		that.map.restart()
-		that.cft.reset()
-	}
+	// 	that.map.restart()
+	// 	that.cft.reset()
+	// }
 
 	that.reInit = data => {
 		state.initGraphs(data.graph)
