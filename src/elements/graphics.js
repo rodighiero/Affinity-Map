@@ -199,28 +199,29 @@ export const drawNode = (node, context, labNameScale) => {
 		}
 	}
 
-	// // Segments: visible affinities
-	// const setBackground = () => {
-	// 	_r -= config.node.gap + config.node.arc.max
-	// 	drawOuterCircle(_r + config.node.arc.max / 2, config.node.arc.max, staticColor('lighterBackground'), context)
-	// }
-	// const scaleAff = scaleLinear().range([0, config.node.arc.max])
-	// a.visibleAcronyms().forEach(aff => {
-	// 	const hasAff = individual => node.network.nodes[individual.index].metrics.values[aff] > 0
-	// 	scaleAff.domain([0, node.metrics.max[aff]])
-	// 	setBackground()
-	// 	if (node.attr.faculty === 'ENAC') {
-	// 		groups.filter(hasAff).forEach(individual =>
-	// 			drawArc(
-	// 				_r + config.node.arc.max / 2,
-	// 				scaleAff(node.network.nodes[individual.index].metrics.values[aff]),
-	// 				individual.startAngle - Math.PI / 2, individual.endAngle - Math.PI / 2,
-	// 				unitColor(node.attr.institute, aff),
-	// 				context
-	// 			)
-	// 		)
-	// 	}
-	// })
+	// Segments: visible affinities
+	const setBackground = () => {
+		_r -= config.node.gap + config.node.arc.max
+		drawOuterCircle(_r + config.node.arc.max / 2, config.node.arc.max, staticColor('lighterBackground'), context)
+	}
+	const scaleAff = scaleLinear().range([0, config.node.arc.max])
+	a.visibleAcronyms().forEach(aff => {
+		const hasAff = individual => node.network.nodes[individual.index].metrics.values[aff] > 0
+		const maxAff = max(node.network.nodes, node => node.metrics.values[aff])
+		scaleAff.domain([0, maxAff])
+		setBackground()
+		if (node.attr.faculty === 'ENAC') {
+			groups.filter(hasAff).forEach(individual =>
+				drawArc(
+					_r + config.node.arc.max / 2,
+					scaleAff(node.network.nodes[individual.index].metrics.values[aff]),
+					individual.startAngle - Math.PI / 2, individual.endAngle - Math.PI / 2,
+					unitColor(node.attr.institute, aff),
+					context
+				)
+			)
+		}
+	})
 
 	// // Chords diagram
 	if (config.visibility.chords) {
