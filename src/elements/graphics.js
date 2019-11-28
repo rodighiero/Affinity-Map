@@ -167,16 +167,15 @@ export const drawNode = (node, context, labNameScale) => {
 	// console.log(node.metrics)
 
 
-	// const total = a.visibleAcronyms().reduce((total, key) => total + node.metrics.std[key], 0)
-	// _s.domain([0, total])
+	const total = a.visibleAcronyms().reduce((total, key) => total + node.metrics.values[key], 0)
+	_s.domain([0, total])
 
 
-
-	// a.visibleAcronyms().forEach(affinity => {
-	// 	const _w = _s(node.metrics.std[affinity])
-	// 	_r -= config.node.gap + _w
-	// 	drawOuterCircle(_r + _w / 2, _w, unitColor(node.attr.institute, affinity), context)
-	// })
+	a.visibleAcronyms().forEach(affinity => {
+		const _w = _s(node.metrics.values[affinity])
+		_r -= config.node.gap + _w
+		drawOuterCircle(_r + _w / 2, _w, unitColor(node.attr.institute, affinity), context)
+	})
 
 	// Scholars' names
 	_r -= config.node.gap + config.node.scholarThickness
