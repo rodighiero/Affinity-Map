@@ -44,12 +44,14 @@ export default {
 		return ['adv', 'pub', 'tea']
 	},
 	reverseVisibleAcronyms(){
-		if( state.rvisibleAffs ){
-			return state.rvisibleAffs
-		} else {
-			state.rvisibleAffs = state.affinities.filter(o=>o.visibility===true).map(o=>o.acronym)
-			return state.rvisibleAffs
-		}
+		// if( state.rvisibleAffs ){
+		// 	return state.rvisibleAffs
+		// } else {
+		// 	// state.rvisibleAffs = state.affinities.filter(o=>o.visibility===true).map(o=>o.acronym)
+		// 	state.rvisibleAffs =  [...state.visibleAcronyms()].reverse()
+		// 	return state.rvisibleAffs
+		// }
+		return ['tea', 'pub', 'adv']
 	},
 	orderedAcronyms(){
 		return state.orderedAcronyms
