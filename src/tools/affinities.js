@@ -32,26 +32,15 @@ export default {
 	},
 
 	visibleAcronyms(){
-		// if( state.visibleAffs ){
-		// 	return state.visibleAffs
-		// } else {
-
-		// 	// console.log(state.affinities)
-
-		// 	state.visibleAffs = state.affinities.filter(o=>o.visibility===true).map(o=>o.acronym).reverse()
-		// 	return state.visibleAffs
-		// }
-		return ['adv', 'pub', 'tea']
+		return state.acronyms
 	},
 	reverseVisibleAcronyms(){
-		// if( state.rvisibleAffs ){
-		// 	return state.rvisibleAffs
-		// } else {
-		// 	// state.rvisibleAffs = state.affinities.filter(o=>o.visibility===true).map(o=>o.acronym)
-		// 	state.rvisibleAffs =  [...state.visibleAcronyms()].reverse()
-		// 	return state.rvisibleAffs
-		// }
-		return ['tea', 'pub', 'adv']
+		if( state.rvisibleAffs ){
+			return state.rvisibleAffs
+		} else {
+			state.rvisibleAffs =  [...state.acronyms].reverse()
+			return state.rvisibleAffs
+		}
 	},
 	orderedAcronyms(){
 		return state.orderedAcronyms
