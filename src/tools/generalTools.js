@@ -47,3 +47,12 @@ export const capitalize = s => s.slice(0, 1).toUpperCase() + s.slice(1)
 export const initPairs = nodes => {
 	state.pairs = nodes.length > 1 ? combinatorics.bigCombination(nodes, 2) : []
 }
+
+export const middleSpace = string => {
+	const middle = Math.round(string.length / 2)
+	for (let i = middle, j = middle; i < string.length || j >= 0; i++ , j--) {
+		if (string[i] === ' ') return i
+		if (string[j] === ' ') return j
+	}
+	return 0
+}

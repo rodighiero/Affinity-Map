@@ -6,7 +6,7 @@ import state from '../settings/state'
 import config from '../settings/config'
 import { staticColor, unitColor } from '../settings/colors'
 import a from '../tools/affinities'
-
+import { middleSpace } from '../tools/generalTools'
 
 /******************************************************************************
 *
@@ -183,11 +183,15 @@ export const drawNode = (node, context, labNameScale) => {
 	if (node.attr.faculty === 'ENAC') {
 		if (config.visibility.individuals) {
 			const individuals = groups.reduce((array, individual) => {
+				// cut individual name into two halves
+				const { name } = node.network.nodes[individual.index].attr
+				const i = middleSpace(name)
+
 				array.push({
 					distance: _r + (config.node.gap + config.node.scholarThickness) / 2,
 					rotation: individual.startAngle + (individual.endAngle - individual.startAngle) / 2,
-					string_a: node.network.nodes[individual.index].attr.name_a,
-					string_b: node.network.nodes[individual.index].attr.name_b,
+					string_a: name.slice(0, i),
+					string_b: name.slice(i + 1),
 				})
 				return array
 			}, [])
@@ -219,21 +223,24 @@ export const drawNode = (node, context, labNameScale) => {
 	// })
 
 	// // Chords diagram
-		if (config.visibility.chords) {
-			_r -= config.node.gap
-			const valid = chord => chord.source.value > 0 && chord.target.value > 0,
-				_max = max(chords, chord => chord.source.value),
-				_scaleTransparency = scaleLinear().domain([0, _max]).range([0.05, 0.2])
-			chords.filter(valid).forEach(chord => drawChord(chord, _scaleTransparency(chord.source.value), ribbon().context(context).radius(_r), context))
-		}
+	if (config.visibility.chords) {
+		_r -= config.node.gap
+		const valid = chord => chord.source.value > 0 && chord.target.value > 0,
+			_max = max(chords, chord => chord.source.value),
+			_scaleTransparency = scaleLinear().domain([0, _max]).range([0.05, 0.2])
+		chords.filter(valid).forEach(chord => drawChord(chord, _scaleTransparency(chord.source.value), ribbon().context(context).radius(_r), context))
+	}
 
 
 	if (labNameScale)
 		context.scale(labNameScale, labNameScale)
 
 	// // Laboratory informations
-	if (config.visibility.labNames)
-		drawName(node.attr.enName_a, node.attr.enName_b, context)
+	if (config.visibility.labNames) {
+		const { enName: name } = node.attr
+		const i = middleSpace(name)
+		drawName(name.slice(0, i), name.slice(i + 1), context)
+	}
 	if (config.visibility.acronym)
 		drawAcronym(node.attr.displayName ? node.attr.displayName : node.attr.name, context)
 	if (config.visibility.headNames)
