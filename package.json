@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@types/d3-selection": "^1.4.1",
-    "acorn": "^7.1.0",
+    "acorn": "^7.1.1",
     "d3-array": "^2.4.0",
     "d3-chord": "^1.0.6",
     "d3-color": "^1.4.0",
