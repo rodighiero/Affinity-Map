@@ -455,7 +455,7 @@ button:disabled {
 	top: 0;
 	right: 0;
 	background-color: transparent;
-	background-image: url(b2b07c81fbfc935ad237c86c86b3e3b2.png);
+	background-image: url(f4956ccd6e3a658c41a3496cbd25a1c4.png);
 	background-size: 100px;
 }
 
@@ -468,7 +468,7 @@ button:disabled {
 	top: 190px;
 	left: 10px;
 	background-color: transparent;
-	background-image: url(f0bbfe8e3f58003010fa861613514524.svg);
+	background-image: url(6ef6b06150bac9fa91988f72f174dacd.svg);
 	background-size: 250px;
 	width: 250px;
 	height: 45px;
@@ -523,7 +523,7 @@ div.loginout {
 	display: block;
 	width: 45px;
 	height: 40px;
-	background-image: url(221c5862057eca33e7063f536bf0c7f6.svg);
+	background-image: url(5b6a13a4c625dcc8e28e94972cab5032.svg);
 	background-size: 36px;
 }
 
@@ -614,7 +614,7 @@ div.loginout {
 #dcpOpenBtn {
 	right: 4px;
 	position: absolute;
-	background-image: url(03493592bb73d23b7c56c4f82b9fd630.svg);
+	background-image: url(70960e49fe8fc9b59e8f84da17d67e09.svg);
 	top: 4px;
 	height: 35px!important;
 	width: 35px;
@@ -624,7 +624,7 @@ div.loginout {
 
 #dcpOpenBtn.closed {
 	transition: 0.5s;
-	background-image: url(ce1c1c1a2f38eb3786116f6a1d078127.svg);
+	background-image: url(2ca354ed68f7ac8add8eb104e3421301.svg);
 	top: 3px;
 	visibility: visible;
 }
