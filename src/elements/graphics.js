@@ -72,19 +72,19 @@ export const drawInnerCircle = (r, fill, context) => {
 const lineSpacing = 5
 const maxKeywords = 10
 
-export const drawKeywords = pairs => {
-	pairs.forEach(pair => {
-		state.context.beginPath()
-		state.context.font = 'normal 500 3pt Arial'
-		state.context.textAlign = 'center'
-		state.context.fillStyle = pair.color
-		state.context.fill()
-		const offSet = Math.min(maxKeywords, pair.keywords.length) / 2 * lineSpacing
-		state.context.translate(pair.x, pair.y - offSet)
-		pair.keywords.slice(0, maxKeywords).forEach((text, i) => state.context.fillText(text, 0, i * lineSpacing))
-		state.context.translate(-pair.x, -pair.y + offSet)
-	})
-}
+// export const drawKeywords = pairs => {
+// 	pairs.forEach(pair => {
+// 		state.context.beginPath()
+// 		state.context.font = 'normal 500 3pt Arial'
+// 		state.context.textAlign = 'center'
+// 		state.context.fillStyle = pair.color
+// 		state.context.fill()
+// 		const offSet = Math.min(maxKeywords, pair.keywords.length) / 2 * lineSpacing
+// 		state.context.translate(pair.x, pair.y - offSet)
+// 		pair.keywords.slice(0, maxKeywords).forEach((text, i) => state.context.fillText(text, 0, i * lineSpacing))
+// 		state.context.translate(-pair.x, -pair.y + offSet)
+// 	})
+// }
 
 export const drawLinks = (links, ctx) => {
 
@@ -100,15 +100,15 @@ export const drawLinks = (links, ctx) => {
 	})
 }
 
-const drawName = (text_a, text_b, context) => {
-	context.scale(0.1, 0.1)
-	context.fillStyle = staticColor('foreground')
-	context.font = 'normal 400 18pt Arial'
-	context.textAlign = 'center'
-	context.fillText(text_a, 0, -100)
-	context.fillText(text_b, 0, -70)
-	context.scale(10, 10)
-}
+// const drawName = (text_a, text_b, context) => {
+// 	context.scale(0.1, 0.1)
+// 	context.fillStyle = staticColor('foreground')
+// 	context.font = 'normal 400 18pt Arial'
+// 	context.textAlign = 'center'
+// 	context.fillText(text_a, 0, -100)
+// 	context.fillText(text_b, 0, -70)
+// 	context.scale(10, 10)
+// }
 
 const drawOuterCircle = (r, width, stroke, context) => {
 	context.beginPath()
@@ -128,15 +128,15 @@ export const drawOrbit = (distance, x, y, ctx) => {
 	ctx.translate(-x, -y)
 }
 
-export const drawSatelliteAcronym = (text, ctx) => {
+// export const drawSatelliteAcronym = (text, ctx) => {
 
-	ctx.scale(.1, .1)
-	ctx.fillStyle = staticColor('foreground')
-	ctx.font = 'normal 400 8pt Arial'
-	ctx.textAlign = 'center'
-	ctx.fillText(text, 0, 4)
-	ctx.scale(10, 10)
-}
+// 	ctx.scale(.1, .1)
+// 	ctx.fillStyle = staticColor('foreground')
+// 	ctx.font = 'normal 400 8pt Arial'
+// 	ctx.textAlign = 'center'
+// 	ctx.fillText(text, 0, 4)
+// 	ctx.scale(10, 10)
+// }
 
 
 
@@ -178,26 +178,26 @@ export const drawNode = (node, context, labNameScale) => {
 	})
 
 	// Scholars' names
-	_r -= config.node.gap + config.node.scholarThickness
-	drawOuterCircle(_r + config.node.scholarThickness / 2, config.node.scholarThickness, staticColor('lighterBackground'), context) // Background
-	if (node.attr.faculty === 'ENAC') {
-		if (config.visibility.individuals) {
-			const individuals = groups.reduce((array, individual) => {
-				// cut individual name into two halves
-				const { name } = node.network.nodes[individual.index].attr
-				const i = middleSpace(name)
+	// _r -= config.node.gap + config.node.scholarThickness
+	// drawOuterCircle(_r + config.node.scholarThickness / 2, config.node.scholarThickness, staticColor('lighterBackground'), context) // Background
+	// if (node.attr.faculty === 'ENAC') {
+	// 	if (config.visibility.individuals) {
+	// 		const individuals = groups.reduce((array, individual) => {
+	// 			// cut individual name into two halves
+	// 			const { name } = node.network.nodes[individual.index].attr
+	// 			const i = middleSpace(name)
 
-				array.push({
-					distance: _r + (config.node.gap + config.node.scholarThickness) / 2,
-					rotation: individual.startAngle + (individual.endAngle - individual.startAngle) / 2,
-					string_a: name.slice(0, i),
-					string_b: name.slice(i + 1),
-				})
-				return array
-			}, [])
-			drawIndividuals(individuals, context)
-		}
-	}
+	// 			array.push({
+	// 				distance: _r + (config.node.gap + config.node.scholarThickness) / 2,
+	// 				rotation: individual.startAngle + (individual.endAngle - individual.startAngle) / 2,
+	// 				string_a: name.slice(0, i),
+	// 				string_b: name.slice(i + 1),
+	// 			})
+	// 			return array
+	// 		}, [])
+	// 		drawIndividuals(individuals, context)
+	// 	}
+	// }
 
 	// Segments: visible affinities
 	const setBackground = () => {
@@ -237,17 +237,17 @@ export const drawNode = (node, context, labNameScale) => {
 		context.scale(labNameScale, labNameScale)
 
 	// // Laboratory informations
-	if (config.visibility.labNames) {
-		const { enName: name } = node.attr
-		const i = middleSpace(name)
-		drawName(name.slice(0, i), name.slice(i + 1), context)
-	}
-	if (config.visibility.acronym)
-		drawAcronym(node.attr.displayName ? node.attr.displayName : node.attr.name, context)
-	if (config.visibility.headNames)
-		drawHead(node.attr.labProfNames, context)
-	if (labNameScale)
-		context.scale(1 / labNameScale, 1 / labNameScale)
+	// if (config.visibility.labNames) {
+	// 	const { enName: name } = node.attr
+	// 	const i = middleSpace(name)
+	// 	drawName(name.slice(0, i), name.slice(i + 1), context)
+	// }
+	// if (config.visibility.acronym)
+	// 	drawAcronym(node.attr.displayName ? node.attr.displayName : node.attr.name, context)
+	// if (config.visibility.headNames)
+	// 	drawHead(node.attr.labProfNames, context)
+	// if (labNameScale)
+	// 	context.scale(1 / labNameScale, 1 / labNameScale)
 
 	// // Set visibility
 	if (!node.visibility)
@@ -272,11 +272,11 @@ export const drawSatellite = (satellite, link, ctx, satScale, nameScale) => {
 	drawInnerCircle(link.satelliteRadius, staticColor('background'), ctx)
 
 	// Drawing acronym
-	if (nameScale && nameScale !== 1)
-		ctx.scale(nameScale, nameScale)
-	drawSatelliteAcronym(satellite.name, ctx)
-	if (nameScale && nameScale !== 1)
-		ctx.scale(1 / nameScale, 1 / nameScale)
+	// if (nameScale && nameScale !== 1)
+	// 	ctx.scale(nameScale, nameScale)
+	// drawSatelliteAcronym(satellite.name, ctx)
+	// if (nameScale && nameScale !== 1)
+	// 	ctx.scale(1 / nameScale, 1 / nameScale)
 
 	// Drawings halos
 	a.reverseVisibleAcronyms().reduce((_r, aff) => {

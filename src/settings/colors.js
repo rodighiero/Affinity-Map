@@ -3,10 +3,12 @@ import state from './state'
 
 // Setting color palettes
 
+const white = rgb(255, 255, 255)
+
 const enac = {
-	IA: lab(50, 69, 48),
-	IIC: lab(50, 12, -75),
-	IIE: lab(50, -14, 64),
+	IA: white,
+	IIC: white,
+	IIE: white,
 }
 
 const elements = {
@@ -15,8 +17,8 @@ const elements = {
 	lighterBackground: rgb(45, 45, 45).toString(),
 	filteredBackground: rgb(45, 45, 45, .8).toString(),
 	placeholder: rgb(80, 80, 80).toString(),
-	link: rgb(80, 80, 80).toString(),
-	orbits: rgb(50, 50, 50).toString(),
+	link: rgb(255, 255, 255, .5).toString(),
+	orbits: rgb(255, 255, 255, .4).toString(),
 	externalNode: rgb(60, 60, 60),
 	keywordsOn: rgb(220, 220, 220).toString(),
 	keywordsOff: rgb(150, 150, 150).toString(),
