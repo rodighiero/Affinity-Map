@@ -5,7 +5,7 @@ export default {
 		arc: {
 			max: 2,
 		},
-		distance: 110,
+		distance: 200,
 		gap: 1,
 		min: .1,
 		max: 8,
@@ -18,8 +18,8 @@ export default {
 		width: {
 			empty: .2,
 			gap: .1,
-			min: .5,
-			max: 2,
+			min: 1,
+			max: 3,
 		},
 		radius: 3,
 	},

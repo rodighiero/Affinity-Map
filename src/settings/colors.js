@@ -11,18 +11,21 @@ const enac = {
 	IIE: white,
 }
 
+// 100, 72, 31
+
 const elements = {
-	background: rgb(40, 40, 40).toString(),
-	foreground: rgb(255, 255, 255).toString(),
-	lighterBackground: rgb(45, 45, 45).toString(),
-	filteredBackground: rgb(45, 45, 45, .8).toString(),
-	placeholder: rgb(80, 80, 80).toString(),
-	link: rgb(255, 255, 255, .5).toString(),
-	orbits: rgb(255, 255, 255, .4).toString(),
+	// background: rgb(40, 40, 40).toString(),
+	// background: rgb(30, 48, 70).toString(),
+	// foreground: rgb(255, 255, 255).toString(),
+	// // lighterBackground: rgb(45, 45, 45).toString(),
+	// filteredBackground: rgb(45, 45, 45, .8).toString(),
+	// placeholder: rgb(80, 80, 80).toString(),
+	link: rgb(255, 255, 255, 1).toString(),
+	orbits: rgb(255, 255, 255, 1).toString(),
 	externalNode: rgb(60, 60, 60),
 	keywordsOn: rgb(220, 220, 220).toString(),
 	keywordsOff: rgb(150, 150, 150).toString(),
-	transparent: rgb(0, 0, 0, 0).toString(),
+	// transparent: rgb(0, 0, 0, 0).toString(),
 	chord: rgb(255, 255, 255),
 }
 
