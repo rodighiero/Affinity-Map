@@ -4,19 +4,20 @@ import state from './state'
 // Setting color palettes
 
 const enac = {
-	IA: lab(50, 69, 48),
-	IIC: lab(50, 12, -75),
-	IIE: lab(50, -14, 64),
+	IA: rgb(255, 255, 255),
+	IIC: rgb(255, 255, 255),
+	IIE: rgb(255, 255, 255),
 }
 
 const elements = {
-	background: rgb(40, 40, 40).toString(),
+	background: rgb(255, 0, 0).toString(),
+	backgroundSatellites: rgb(255, 255, 255).toString(),
 	foreground: rgb(255, 255, 255).toString(),
 	lighterBackground: rgb(45, 45, 45).toString(),
 	filteredBackground: rgb(45, 45, 45, .8).toString(),
 	placeholder: rgb(80, 80, 80).toString(),
-	link: rgb(80, 80, 80).toString(),
-	orbits: rgb(50, 50, 50).toString(),
+	link: rgb(255, 255, 255).toString(),
+	orbits: rgb(255, 255, 255).toString(),
 	externalNode: rgb(60, 60, 60),
 	keywordsOn: rgb(220, 220, 220).toString(),
 	keywordsOff: rgb(150, 150, 150).toString(),

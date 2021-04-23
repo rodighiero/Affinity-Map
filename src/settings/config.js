@@ -5,8 +5,8 @@ export default {
 		arc: {
 			max: 2,
 		},
-		distance: 110,
-		gap: 2,
+		distance: 180,
+		gap: 1,
 		min: .1,
 		max: 8,
 		radius: 55,
@@ -33,16 +33,16 @@ export default {
 
 	// Graphical elements visibility
 	visibility: {
-		acronym: true,
+		acronym: false,
 		chords: true,
 		filter: true,
-		individuals: true,
+		individuals: false,
 		keywords: false,
 		links: true,
 		nodes: true,
 		satellites: true,
-		headNames: true,
-		labNames: true,
+		headNames: false,
+		labNames: false,
 		orbits: true,
 	},
 

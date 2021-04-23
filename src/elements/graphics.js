@@ -93,8 +93,25 @@ export const drawLinks = (links, ctx) => {
 		ctx.strokeStyle = staticColor('link')
 		ctx.lineWidth = key
 		value.forEach(link => {
-			ctx.moveTo(link.source.x, link.source.y)
-			ctx.lineTo(link.target.x, link.target.y)
+
+			const angle = Math.atan((link.target.y - link.source.y)
+				/ (link.target.x - link.source.x))
+
+			const x = Math.cos(angle) * config.node.radius
+			const y = Math.sin(angle) * config.node.radius
+
+			// console.log(angle)
+
+			if (link.target.x < link.source.x) {
+				ctx.moveTo(link.source.x - x, link.source.y - y)
+				ctx.lineTo(link.target.x + x, link.target.y + y)
+			}
+
+			if (link.target.x > link.source.x) {
+				ctx.moveTo(link.source.x + x, link.source.y + y)
+				ctx.lineTo(link.target.x - x, link.target.y - y)
+			}
+
 		})
 		ctx.stroke()
 	})
@@ -156,7 +173,7 @@ export const drawNode = (node, context, labNameScale) => {
 	const groups = state.chordLayouts[node.attr.name].groups()
 
 	// // Background
-	drawInnerCircle(config.node.radius, staticColor('background'), context)
+	// drawInnerCircle(config.node.radius, staticColor('background'), context)
 
 
 
@@ -269,31 +286,31 @@ export const drawSatellite = (satellite, link, ctx, satScale, nameScale) => {
 	if (satScale && satScale !== 1) { ctx.scale(satScale, satScale) }
 
 	// Drawing background
-	drawInnerCircle(link.satelliteRadius, staticColor('background'), ctx)
+	drawInnerCircle(link.satelliteRadius, staticColor('backgroundSatellites'), ctx)
 
 	// Drawing acronym
-	if (nameScale && nameScale !== 1)
-		ctx.scale(nameScale, nameScale)
-	drawSatelliteAcronym(satellite.name, ctx)
-	if (nameScale && nameScale !== 1)
-		ctx.scale(1 / nameScale, 1 / nameScale)
+	// if (nameScale && nameScale !== 1)
+	// 	ctx.scale(nameScale, nameScale)
+	// drawSatelliteAcronym(satellite.name, ctx)
+	// if (nameScale && nameScale !== 1)
+	// 	ctx.scale(1 / nameScale, 1 / nameScale)
 
 	// Drawings halos
-	a.reverseVisibleAcronyms().reduce((_r, aff) => {
-		if (!values[aff]) {
-			_r += satConf.width.gap + satConf.width.empty
-			drawOuterCircle(_r - satConf.width.empty * .5, satConf.width.empty, staticColor('placeholder'), ctx)
-		} else {
-			_r += satConf.width.gap + widths[aff]
-			if (satellite.faculty === 'ENAC') {
-				drawOuterCircle(_r - widths[aff] * .5, widths[aff], unitColor(satellite.institute, aff), ctx)
-			} else {
-				drawOuterCircle(_r - widths[aff] * .5, widths[aff], staticColor('externalNode'), ctx)
-			}
+	// a.reverseVisibleAcronyms().reduce((_r, aff) => {
+	// 	if (!values[aff]) {
+	// 		_r += satConf.width.gap + satConf.width.empty
+	// 		drawOuterCircle(_r - satConf.width.empty * .5, satConf.width.empty, staticColor('placeholder'), ctx)
+	// 	} else {
+	// 		_r += satConf.width.gap + widths[aff]
+	// 		if (satellite.faculty === 'ENAC') {
+	// 			drawOuterCircle(_r - widths[aff] * .5, widths[aff], unitColor(satellite.institute, aff), ctx)
+	// 		} else {
+	// 			drawOuterCircle(_r - widths[aff] * .5, widths[aff], staticColor('externalNode'), ctx)
+	// 		}
 
-		}
-		return _r
-	}, satConf.radius)
+	// 	}
+	// 	return _r
+	// }, satConf.radius)
 
 	// Set visibility
 	if (!satellite.visibility)

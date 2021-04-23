@@ -58,6 +58,9 @@ import drawLinks from '../elements/links'
 	
 		config.screen.width = div.clientWidth * config.screen.density
 		config.screen.height = div.clientHeight * config.screen.density
+
+		config.screen.width = div.clientWidth * config.screen.density * 4
+		config.screen.height = div.clientHeight * config.screen.density * 4
 	
 		state.canvas
 			.style('width', `${div.clientWidth}px`)
