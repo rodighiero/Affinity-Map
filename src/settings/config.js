@@ -6,7 +6,7 @@ export default {
 			max: 2,
 		},
 		distance: 110,
-		gap: 1,
+		gap: 2,
 		min: .1,
 		max: 8,
 		radius: 55,
@@ -17,9 +17,9 @@ export default {
 	satellite: {
 		width: {
 			empty: .2,
-			gap: .1,
-			min: .5,
-			max: 2,
+			gap: .2,
+			min: .2,
+			max: 3,
 		},
 		radius: 3,
 	},
