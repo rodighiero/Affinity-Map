@@ -5,7 +5,7 @@ import { drawLinks } from './graphics'
 import a from '../tools/affinities'
 
 
-const tickness = 10
+const tickness = 5
 
 export default (links, ctx = state.context) => {
 
